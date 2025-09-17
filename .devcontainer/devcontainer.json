@@ -1,0 +1,30 @@
+{
+    "name": "Java & Spring Boot Application",
+    "image": "mcr.microsoft.com/devcontainers/java:1-21",
+    "features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "none",
+			"installMaven": "true",
+			"mavenVersion": "3.8.6",
+			"installGradle": "false"
+		}
+	},
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "pivotal.vscode-boot-dev-pack",
+                "vscjava.vscode-spring-boot-dashboard",
+                "vscjava.vscode-spring-initializr"
+            ]
+        }
+    },
+    "forwardPorts": [
+        8080
+    ],
+    "postCreateCommand": "mvn clean install",
+    "remoteUser": "vscode"
+}
