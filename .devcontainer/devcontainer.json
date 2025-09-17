@@ -2,13 +2,13 @@
     "name": "Java & Spring Boot Application",
     "image": "mcr.microsoft.com/devcontainers/java:1-21",
     "features": {
-		"ghcr.io/devcontainers/features/java:1": {
-			"version": "none",
-			"installMaven": "true",
-			"mavenVersion": "3.8.6",
-			"installGradle": "false"
-		}
-	},
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "none",
+            "installMaven": "true",
+            "mavenVersion": "3.8.6",
+            "installGradle": "false"
+        }
+    },
     "customizations": {
         "vscode": {
             "settings": {
@@ -25,6 +25,6 @@
     "forwardPorts": [
         8080
     ],
-    "postCreateCommand": "mvn clean install",
+    "postCreateCommand": "mvn clean install -U",
     "remoteUser": "vscode"
 }
