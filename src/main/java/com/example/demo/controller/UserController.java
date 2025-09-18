@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.model.User;
@@ -33,11 +31,11 @@ public class UserController {
             return "add-user";
         }
 
-        repository.save(user);
+        user = repository.save(user);
         return "redirect:/index";
     }
 
-    @GetMapping("/index")
+    @GetMapping({ "/" ,"/index "})
     public String showUserList(Model model) {
         model.addAttribute("users", repository.findAll());
         return "index";
@@ -52,7 +50,7 @@ public class UserController {
         return "update-user";
     }
 
-    @PutMapping("/update/{id}")
+    @PostMapping("/update/{id}")
     public String updateUser(@PathVariable("id") long id, @Valid User user,
             BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -64,7 +62,7 @@ public class UserController {
         return "redirect:/index";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") long id, Model model) {
         User user = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));

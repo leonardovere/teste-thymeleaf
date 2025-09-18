@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User</title>
+    <title>Update User</title>
 </head>
 
 <body>
-    <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
         <fieldset>
             <label for="name">Name</label>
             <input type="text" th:field="*{name}" id="name" placeholder="Name">
@@ -16,12 +16,12 @@
         </fieldset>
 
         <fieldset>
-            <label for="email">E-mail</label>
-            <input type="email" th:field="*{email}" id="email" placeholder="E-mail">
+            <label for="email">Email</label>
+            <input type="text" th:field="*{email}" id="email" placeholder="Email">
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </fieldset>
 
-        <button type="submit">Add User</button>
+        <button type="submit">Update User</button>
     </form>
 </body>
 
