@@ -35,7 +35,7 @@ public class UserController {
         return "redirect:/index";
     }
 
-    @GetMapping({ "/" ,"/index "})
+    @GetMapping({ "/", "/index" })
     public String showUserList(Model model) {
         model.addAttribute("users", repository.findAll());
         return "index";
